@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/coin-chart/static/css/main.49ac579d.css",
+    "main.js": "/coin-chart/static/js/main.8c92ceae.js",
+    "index.html": "/coin-chart/index.html",
+    "main.49ac579d.css.map": "/coin-chart/static/css/main.49ac579d.css.map",
+    "main.8c92ceae.js.map": "/coin-chart/static/js/main.8c92ceae.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.49ac579d.css",
+    "static/js/main.8c92ceae.js"
+  ]
+}
