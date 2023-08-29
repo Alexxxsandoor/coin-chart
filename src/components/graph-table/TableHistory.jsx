@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Table } from "react-bootstrap";
 import { deleteCurrencyHistory } from "../../store/currencies";
 import { useDispatch } from "react-redux";
-import ModalChangeValuesCurrency from "../modals-popup/ModalChangeValuesCurrency";
+import ModalPopup from "../modals-popup/ModalPopup";
 
 const TableHistory = (props) => {
   const { currencyHistoryValueArray, currencyId } = props;
@@ -29,11 +29,10 @@ const TableHistory = (props) => {
               <td>{new Date(el.date).toLocaleString()}</td>
 
               <td className="d-flex">
-                <ModalChangeValuesCurrency
+                <ModalPopup
+                  typeFunc={"CHANGE_CURRENCY_HISTORY"}
                   currencyId={currencyId}
                   currencyHistoryId={el.id}
-                  oldValue={el.value}
-                  oldDate={el.date}
                 />
                 <Button
                   onClick={() => delHistory(currencyId, el.id)}

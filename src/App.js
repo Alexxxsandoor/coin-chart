@@ -1,13 +1,28 @@
 import { useSelector } from "react-redux";
-
 import Header from "./components/header/Header";
-import ModalCurrency from "./components/modals-popup/ModalCurrency";
+import CurrencyPage from "./components/currency-page/CurrencyPage";
+import ModalPopup from "./components/modals-popup/ModalPopup";
 
 function App() {
-  const currency = useSelector((state) => state.currencyList.currencies);
+  const { selectCurrencyId, currencies } = useSelector(
+    (state) => state.currencyList
+  );
 
   return (
-    <>{currency.length > 0 ? <Header /> : <ModalCurrency type={true} />}</>
+    <>
+      {currencies.length > 0 ? (
+        <Header />
+      ) : (
+        <div className="mt-4">
+          <ModalPopup typeFunc={"ADD_CURRENCY"} />
+        </div>
+      )}
+      <div className="container">
+        {selectCurrencyId ? (
+          <CurrencyPage currencyId={selectCurrencyId} />
+        ) : null}
+      </div>
+    </>
   );
 }
 

@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import Graph from "../graph-table/Graph";
 import TableHistory from "../graph-table/TableHistory";
+import { useContext } from "react";
 
 const CurrencyPage = (props) => {
   const { currencyId } = props;
@@ -17,13 +18,13 @@ const CurrencyPage = (props) => {
   return (
     <>
       {currency.historyValue.length ? (
-        <div className="container pt-4">
+        <>
           <Graph value={values} />
           <TableHistory
             currencyId={currencyId}
             currencyHistoryValueArray={sortedArray}
           />
-        </div>
+        </>
       ) : null}
     </>
   );
