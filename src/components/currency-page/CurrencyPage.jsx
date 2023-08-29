@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux";
 import Graph from "../graph-table/Graph";
 import TableHistory from "../graph-table/TableHistory";
-import { useContext } from "react";
 
 const CurrencyPage = (props) => {
   const { currencyId } = props;
