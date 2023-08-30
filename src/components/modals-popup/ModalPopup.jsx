@@ -5,7 +5,9 @@ import {
   addCurrency,
   addCurrencyValues,
   changeCurrencyHistory,
-} from "../../store/currencies";
+} from "store/currencies";
+
+import {ADD_CURRENCY, ADD_CURRENCY_HISTORY, CHANGE_CURRENCY_HISTORY} from "constants/constants-modal"
 
 const ModalPopup = (props) => {
   const [currencyName, setCurrencyName] = useState();
@@ -26,35 +28,35 @@ const ModalPopup = (props) => {
   const handleShowModal = () => setShow(true);
 
   const typeButton = () => {
-    if (typeFunc === "ADD_CURRENCY") {
+    if (typeFunc === ADD_CURRENCY) {
       return "primary";
-    } else if (typeFunc === "ADD_CURRENCY_HISTORY") {
+    } else if (typeFunc === ADD_CURRENCY_HISTORY) {
       return "success";
-    } else if (typeFunc === "CHANGE_CURRENCY_HISTORY") {
+    } else if (typeFunc === CHANGE_CURRENCY_HISTORY) {
       return "warning";
     }
   };
 
   const nameButton = () => {
-    if (typeFunc === "ADD_CURRENCY") {
+    if (typeFunc === ADD_CURRENCY) {
       return "Add Currency";
-    } else if (typeFunc === "ADD_CURRENCY_HISTORY") {
+    } else if (typeFunc === ADD_CURRENCY_HISTORY) {
       return "+Add Values";
-    } else if (typeFunc === "CHANGE_CURRENCY_HISTORY") {
+    } else if (typeFunc === CHANGE_CURRENCY_HISTORY) {
       return "edit";
     }
   };
 
   const modalTitle = () => {
-    if (typeFunc === "ADD_CURRENCY") return "Add Currency";
-    else if (typeFunc === "ADD_CURRENCY_HISTORY")
+    if (typeFunc === ADD_CURRENCY) return "Add Currency";
+    else if (typeFunc === ADD_CURRENCY_HISTORY)
       return `${currency.name} add currency history value`;
-    else if (typeFunc === "CHANGE_CURRENCY_HISTORY")
+    else if (typeFunc === CHANGE_CURRENCY_HISTORY)
       return `${currency.name} change currency history`;
   };
 
   const modalInputs = () => {
-    if (typeFunc === "ADD_CURRENCY") {
+    if (typeFunc === ADD_CURRENCY) {
       return (
         <Modal.Body>
           <Form.Group controlId="currencyName" className="mb-3">
@@ -97,9 +99,9 @@ const ModalPopup = (props) => {
     setCurrencyImage(URL.createObjectURL(e.target.files[0]));
 
   const handleSave = () => {
-    if (typeFunc === "ADD_CURRENCY")
+    if (typeFunc === ADD_CURRENCY)
       dispatch(addCurrency({ currencyName, currencyImage }));
-    else if (typeFunc === "ADD_CURRENCY_HISTORY")
+    else if (typeFunc === ADD_CURRENCY_HISTORY)
       dispatch(
         addCurrencyValues({
           currencyId,
@@ -107,7 +109,7 @@ const ModalPopup = (props) => {
           currencyDate,
         })
       );
-    else if (typeFunc === "CHANGE_CURRENCY_HISTORY")
+    else if (typeFunc === CHANGE_CURRENCY_HISTORY)
       dispatch(
         changeCurrencyHistory({
           currencyId,

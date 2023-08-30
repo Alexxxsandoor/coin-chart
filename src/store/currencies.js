@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const findCurrency = (list, id) => list.find((list) => list.id == id);
+const findCurrency = (list, id) => list.find((list) => list.id === id);
 
 const currenciesSlice = createSlice({
   name: "currencies",

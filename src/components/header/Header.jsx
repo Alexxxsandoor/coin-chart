@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Dropdown } from "react-bootstrap";
 import axios from "axios";
-import { toggleCurrencyId } from "../../store/currencies";
-import ModalPopup from "../modals-popup/ModalPopup";
+import { toggleCurrencyId } from "store/currencies";
+import ModalPopup from "components/modals-popup/ModalPopup";
+import {ADD_CURRENCY, ADD_CURRENCY_HISTORY} from "constants/constants-modal"
 
 const Header = () => {
   const { selectCurrencyId, currencies } = useSelector(
@@ -53,7 +54,7 @@ const Header = () => {
                 {selectCurrency.name}
               </Dropdown.Toggle>
               <Dropdown.Menu>
-                <ModalPopup typeFunc={"ADD_CURRENCY"} />
+                <ModalPopup typeFunc={ADD_CURRENCY} />
                 {currencies.map((el) => (
                   <Dropdown.Item
                     key={el.id}
@@ -66,7 +67,7 @@ const Header = () => {
             </Dropdown>
             <h6>Actual Price: {price} USD</h6>
             <ModalPopup
-              typeFunc={"ADD_CURRENCY_HISTORY"}
+              typeFunc={ADD_CURRENCY_HISTORY}
               currencyId={selectCurrency.id}
             />
           </div>
